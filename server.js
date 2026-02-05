@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 3000;
 // ===============================
 // НАСТРОЙКИ TELEGRAM
 // ===============================
-const TELEGRAM_BOT_TOKEN = process.env.8522703741:AAHLxcpMWFw6YJnSNUK9wJTah8FRnb-NI_Q;
-const CHAT_IDS = process.env.8280246169, "-1003803291660".split(",");
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
 
 
 // ===============================
