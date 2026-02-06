@@ -189,3 +189,58 @@ body {
     width: 100%;
   }
 }
+/* ===== FORM INPUT GLOW ===== */
+
+.contact-form input {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 0 rgba(0, 153, 255, 0);
+}
+
+.contact-form input:focus {
+  box-shadow:
+    0 0 0 2px rgba(0, 153, 255, 0.35),
+    0 0 24px rgba(0, 153, 255, 0.35);
+}
+/* ===== FEATURE CARD GLOW ===== */
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 153, 255, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}
+.contact-form button {
+  box-shadow:
+    0 8px 30px rgba(0, 153, 255, 0.35);
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(0, 153, 255, 0.5);
+}
