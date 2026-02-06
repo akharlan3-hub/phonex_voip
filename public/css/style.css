@@ -158,27 +158,38 @@ body {
   line-height: 1.6;
 }
 
-/* ================= CONTACT ================= */
+/* ================= CONTACT (COMPACT & CENTERED) ================= */
 
 .contact {
   margin-top: 140px;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: 8px;
+}
+
+.contact-hint {
+  color: var(--text-muted);
+  margin-bottom: 32px;
 }
 
 .contact-form {
-  max-width: 520px;
-  margin-top: 32px;
+  width: 100%;
+  max-width: 420px;   /* 🔑 компактная ширина */
+  margin: 0 auto;     /* 🔑 строго по центру */
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .contact-form input {
-  height: 52px;
+  height: 48px;
   background: rgba(255,255,255,0.95);
-  border-radius: 16px;
+  border-radius: 14px;
   border: none;
-  padding: 0 18px;
-  font-size: 15px;
+  padding: 0 16px;
+  font-size: 14.5px;
   outline: none;
   transition: all 0.3s ease;
 }
@@ -186,13 +197,16 @@ body {
 .contact-form input:focus {
   box-shadow:
     0 0 0 2px rgba(42,169,255,0.35),
-    0 0 28px rgba(42,169,255,0.45);
+    0 0 24px rgba(42,169,255,0.45);
 }
 
 .contact-form button {
-  height: 52px;
-  margin-top: 8px;
+  height: 48px;
+  margin-top: 10px;
+  align-self: center; /* 🔑 кнопка по центру */
+  padding: 0 28px;
 }
+
 
 /* ================= FOOTER ================= */
 
