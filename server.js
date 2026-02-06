@@ -103,3 +103,53 @@ app.post("/api/lead", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+import express from "express";
+import fetch from "node-fetch";
+
+const app = express();
+app.use(express.json());
+
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS
+  ? process.env.TELEGRAM_CHAT_IDS.split(",").map(id => id.trim())
+  : [];
+
+app.post("/api/contact", async (req, res) => {
+  const { name, email, telegram } = req.body;
+
+  if (!name || !email) {
+    return res.status(400).json({ error: "Missing fields" });
+  }
+
+  const text = `
+📩 Новая заявка
+Имя: ${name}
+Email: ${email}
+Telegram: ${telegram || "-"}
+`;
+
+  try {
+    for (const chatId of TELEGRAM_CHAT_IDS) {
+      await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text,
+          }),
+        }
+      );
+    }
+
+    res.json({ ok: true });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Telegram error" });
+  }
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});

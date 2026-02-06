@@ -93,3 +93,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+document.querySelector(".contact-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const data = {
+    name: form.querySelector('input[placeholder="Имя"]').value,
+    email: form.querySelector('input[placeholder="Email"]').value,
+    telegram: form.querySelector('input[placeholder="Telegram"]').value,
+  };
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (res.ok) {
+    alert("Заявка отправлена");
+    form.reset();
+  } else {
+    alert("Ошибка отправки");
+  }
+});
