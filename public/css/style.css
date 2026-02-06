@@ -193,27 +193,32 @@ body {
     0 0 40px rgba(42, 169, 255, 0.15);
 }
 
-/* INPUTS */
+/* ===== DARK INPUTS (ORIGINAL STYLE) ===== */
+
 .contact-form input {
   height: 44px;
-  background: rgba(255,255,255,0.96);
-  border: none;
+  background: rgba(10, 20, 40, 0.85); /* 🔑 тёмный фон */
+  border: 1px solid rgba(42,169,255,0.25);
   border-radius: 12px;
   padding: 0 14px;
   font-size: 14px;
+  color: #ffffff; /* светлый текст */
   outline: none;
   transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
 }
 
 .contact-form input::placeholder {
-  color: #7b8ba8;
+  color: rgba(169,196,224,0.65); /* приглушённый */
 }
 
 .contact-form input:focus {
+  border-color: rgba(42,169,255,0.6);
   box-shadow:
     0 0 0 2px rgba(42,169,255,0.35),
     0 0 22px rgba(42,169,255,0.45);
 }
+
 
 /* BUTTON */
 .contact-form button {
