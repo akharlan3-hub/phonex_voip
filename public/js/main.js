@@ -29,18 +29,16 @@ const translations = {
     form_submit: "Отправить"
   }
 };
+
 function setLanguage(lang) {
   const dict = translations[lang];
   if (!dict) return;
 
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.dataset.i18n;
-    if (dict[key]) {
-      el.innerHTML = dict[key];
-    }
+    if (dict[key]) el.innerHTML = dict[key];
   });
 
-  // placeholders формы
   document.querySelector("input[name='name']").placeholder = dict.form_name;
   document.querySelector("input[name='email']").placeholder = dict.form_email;
   document.querySelector("input[name='telegram']").placeholder = dict.form_telegram;
@@ -48,20 +46,18 @@ function setLanguage(lang) {
   localStorage.setItem("lang", lang);
 }
 
-
-
 console.log("✅ main.js подключен");
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".contact-form");
   if (!form) {
-    console.error("Форма не найдена");
+    console.error("❌ Форма не найдена");
     return;
   }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log("📨 клин по форме");
+    console.log("📨 submit формы");
 
     const formData = new FormData(form);
 
@@ -82,38 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
       console.log("Ответ сервера:", data);
 
-      if (!data.success) throw new Error();
+      if (!data.success) throw new Error("Server error");
 
       alert("Заявка отправлена!");
       form.reset();
 
     } catch (err) {
-      console.error(err);
+      console.error("❌ Ошибка отправки:", err);
       alert("Ошибка отправки");
     }
   });
-});
-document.querySelector(".contact-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const form = e.target;
-
-  const data = {
-    name: form.querySelector('input[placeholder="Имя"]').value,
-    email: form.querySelector('input[placeholder="Email"]').value,
-    telegram: form.querySelector('input[placeholder="Telegram"]').value,
-  };
-
-  const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  if (res.ok) {
-    alert("Заявка отправлена");
-    form.reset();
-  } else {
-    alert("Ошибка отправки");
-  }
 });
