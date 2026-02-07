@@ -27,20 +27,23 @@ body {
 /* ================= HEADER ================= */
 
 .header {
-  height: 64px;              /* фиксированная высота */
+  height: 64px;
   display: flex;
-  align-items: center;       /* вертикальное центрирование */
+  align-items: center;
 }
 
 .header-inner {
+  width: 100%;
+  display: flex;                 /* ⬅️ ЭТОГО НЕ ХВАТАЛО */
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  height: 56px;
+.logo img {
+  height: 56px;                  /* ⬅️ увеличиваем ТОЛЬКО картинку */
   width: auto;
 }
+
 
 /* ================= BUTTONS ================= */
 
