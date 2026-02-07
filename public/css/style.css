@@ -27,24 +27,18 @@ body {
 /* ================= HEADER ================= */
 
 .header {
-  height: 64px;
-  display: flex;
-  align-items: center;
+  padding: 20px 0;
 }
 
 .header-inner {
-  width: 100%;
-  display: flex;                 /* ⬅️ ЭТОГО НЕ ХВАТАЛО */
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo img {
-  height: 42px;
-  width: auto;
+.logo {
+  height: 56px;
 }
-
-
 
 /* ================= BUTTONS ================= */
 
@@ -261,7 +255,7 @@ body {
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .features {
     grid-template-columns: 1fr;
   }
@@ -269,12 +263,7 @@ body {
   .hero h1 {
     font-size: 36px;
   }
-
-  .logo img {
-    height: 40px;
-  }
 }
-
 /* ===== WHY TOP TEXT (CENTERED & SEPARATED) ===== */
 
 .why-top {
